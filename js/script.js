@@ -30,27 +30,29 @@ const accurateInterval = (func, time) => {
 class TimerLengthControl extends React.Component {
   render() {
     return (
-      <div className="length-control text-center">
-        <div id={this.props.titleID}>{this.props.title}</div>
+      <div className="cont bg-secondary length-control rounded-3 text-center">
+        <div className="text-light fs-4 fw-bolder" id={this.props.titleID}>{this.props.title}</div>
+        <div className="d-inline-flex">
         <button
-          className="btn btn-primary"
+          className="btn btn-danger"
           id={this.props.minID}
           onClick={this.props.onClick}
           value="-"
         >
           <i className="fa-solid fa-minus" />
         </button>
-        <div className="card-body fs-4" id={this.props.lengthID}>
+        <div className="card-body bg-light fs-4" id={this.props.lengthID}>
           {this.props.length}
         </div>
         <button
-          className="btn btn-primary"
+          className="btn btn-success"
           id={this.props.addID}
           onClick={this.props.onClick}
           value="+"
         >
           <i className="fa-solid fa-plus" />
         </button>
+        </div>
       </div>
     );
   }
@@ -208,8 +210,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div className="main-title text-center fs-2">25 + 5 Clock</div>
-
+        <div className="main-title text-center text-primary fs-1 bg-dark fw-bold">25 + 5 Clock</div>
+        <div className="gcont">
         <TimerLengthControl
           addID="break-increment"
           length={this.state.breakLen}
@@ -230,10 +232,10 @@ class App extends React.Component {
           titleID="session-label"
         />
 
-        <div className="timer d-flex justify-content-center fs-2 border-1" style={this.state.alarmColor}>
+        <div className="timer d-flex bg-dark cont justify-content-center fs-2 border-1 rounded-3" style={this.state.alarmColor}>
           <div className="timer-wrapper text-center">
-            <div id="timer-label">{this.state.timerType}</div>
-            <div id="time-left">{this.clockify()}</div>
+            <div id="timer-label" className="fw-bolder fs-3">{this.state.timerType}</div>
+            <div id="time-left" className="text-danger">{this.clockify()}</div>
           </div>
         </div>
 
@@ -257,6 +259,7 @@ class App extends React.Component {
           }}
           src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
         />
+        </div>
       </div>
     );
   }
